@@ -25,7 +25,15 @@ ul{
     padding-right:20px;
     color:#ffffff;
 }
- 
+
+.dark{
+    padding:15px;
+    background:#35424a;
+    color:#ffffff;
+    margin-top:10px;
+    margin-bottom:10px;
+}
+
 /* Header **/
 header{
      background:#35424a;
@@ -34,7 +42,7 @@ header{
      min-height:70px;
      border-bottom:#e8491d 3px solid;
 }
-  
+
 header a{
       color:#ffffff;
       text-decoration:none;
@@ -70,15 +78,15 @@ header a:hover{
     color:#cccccc;
     font-weight:bold;
 }
-    
-/* Showcase */   
-    
+
+/* Showcase */
+
 #showcase{
     min-height:400px;
     background:url('../image/space.jpg') no-repeat 0 -400px;
     text-align:center;
     color:#ed4c07;
-    
+
 }
 
 #showcase h1{
@@ -86,7 +94,7 @@ header a:hover{
     font-size:55px;
     margin-bottom:10px;
 }
-    
+
 #showcase p{
     font-size:20px;
 }
@@ -105,9 +113,9 @@ header a:hover{
 #newsletter form {
     float:right;
     margin-top:15px;
-    
+
 }
-    
+
 #newsletter  input[type="email"]{
     padding:4px;
     height:25px;
@@ -117,17 +125,45 @@ header a:hover{
 /* Boxes */
 #boxes{
     margin-top:20px;
-}    
-    
+}
+
 #boxes .box{
     float:left;
     text-align: center;
     width:30%;
     padding:10px;
 }
-    
+
 #boxes .box image{
     width:90px;
+}
+
+/* Sidebar */
+aside#sidebar{
+    float:right;
+    width:30px;
+    margin-top:10px;
+} 
+
+aside#siderbar .quote input, aside#siderbar .quote textarea{
+    width:90px;
+    padding:5px;
+}
+
+/* Main-col */
+article#main-col{
+    float:left;
+    width:65%;
+}
+
+/*Services */
+ul#services li{
+    list-style: none;
+    padding:20px;
+    border:#cccccc solid 1px;
+    margin-bottom:5px;
+    background:#e6e6e6;
+    
 }
 
 footer{
@@ -136,6 +172,42 @@ footer{
     color:#ffffff;
     background-color:#e8491d;
     text-align: center;
+}
+
+/* Media Queries */
+@media(max-width: 768px){
+    header #branding
+    header nav,
+    header nav li
+    #newsletter h1
+    #newsletter form
+    #boxes .box,
+    article#main-col
+    aside#sidebar{
+
+        float:none;
+        text-align:center;
+        width:100px;
+    }
+    
+    header{
+        padding-bottom:20px;
+    }
+    
+    #showcase h1{
+        margin-top:40px;
+        
+    }
+    
+    #newsletter button, .quote button{
+        display:block;
+        width:100px;
+    }
+    
+    #newsletter form input[type="email"], .quote input, .quote textarea{    
+        width:100px;
+        margin-bottom:5px;
+    }
 }
 
 
