@@ -83,7 +83,7 @@ header a:hover{
 
 #showcase{
     min-height:400px;
-    background:url('../image/space.jpg') no-repeat 0 -400px;
+    background:url('../image/space.jpg') no-repeat;
     text-align:center;
     color:#ed4c07;
 
@@ -116,11 +116,6 @@ header a:hover{
 
 }
 
-#newsletter  input[type="email"]{
-    padding:4px;
-    height:25px;
-    width:250px;
-}
 
 /* Boxes */
 #boxes{
