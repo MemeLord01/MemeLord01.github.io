@@ -1,0 +1,91 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Processing Demo</title>
+<script type="text/javascript" src="js/processing.js"></script>
+</head>
+<body>
+<script type="text/processing">
+/**
+Author : Bevob Dewan
+Credit : KTByte
+Version : 1.4.0
+
+*/
+//https://www.youtube.com/watch?time_continue=2&v=bV3joOueucg
+//I used most of the coding from this tutorial.
+
+//Start of this Code 
+PImage startimg;
+PImage backImg;
+PImage Marine; 
+PImage Wall2;
+int gamestate = 1;
+int score = 0;
+int highScore = 0;
+int x=-200, y, vy= 0;
+int[] wy = new int[2];
+int[] wx = new int[2];
+void setup() {//The size of the window
+   size(1280,640);
+   fill(0);
+   textSize(50);
+   imageMode(CENTER);
+   //loads the images
+   startimg = loadImage("image/Start Image.png");
+   backImg = loadImage("image/Background1.PNG");
+   Marine = loadImage("image/Marine2.PNG");
+   Wall2 = loadImage("image/Wall2.png");
+   
+}
+void draw() { //Putting the background and characters in specific place
+  if(gamestate == 0) {
+    imageMode(CORNER);
+    image(backImg, x, 0);
+    image(backImg, x+backImg.width, 0);
+    image(Marine, width/2, y);
+   x -=6;//background starts moving
+   vy += 1;
+   y += vy; //movement of the character
+   if(x == -1800) x= 0;
+   for(int i = 0; i < 2; i++) {//Making the walls stay at a specific area
+   imageMode(CENTER);
+   image(Wall2, wx[i], wy[i] - (Wall2.height/2+100));
+   image(Wall2, wx[i], wy[i] + (Wall2.height/2+100));
+   if(wx[i] < 0) {
+   wy[i] = (int)random(200,height-200);
+   wx[i] = width;
+   }
+   if(wx[i] == width/2){
+     score++;// score keeper
+     highScore =max(score, highScore);
+   }  
+   if(y > height || y < 0 || (abs(width/2-wx[i])<25 && abs(y-wy[i])>190)) {
+      gamestate = 1;
+     }  
+   wx[i] -=6;   
+}
+  text(""+score, width/2-15, 640);// score keeps the highscore and starts a new one
+  }
+else{
+  imageMode(CENTER);
+   image(startimg, width/2, height/2);
+   text("High Score: "+highScore, 50, width);
+  }
+}
+void mousePressed() {//starts game when mouse is clicked/the character hops 
+  vy = -17;
+  if(gamestate ==1) {
+   wx[0] = 600;
+   wy[0] = height/2;
+   wx[1] = 900;
+   wx[1] = 600;
+   x = 0;
+   y = height/2;
+   gamestate = 0;
+  }
+}
+</script>
+<canvas id="sketch" style="border: 1px solid black;"></canvas>
+</body>
+</html>
